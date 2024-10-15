@@ -1,5 +1,4 @@
 import os
-from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 from langchain.llms import Cohere
 from langchain_pinecone import PineconeVectorStore
@@ -8,7 +7,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.document_loaders import  Docx2txtLoader, CSVLoader, TextLoader,PyPDFLoader
-import pandas as pd
+
+
 load_dotenv()
 cohere_api_key = os.getenv('COHERE_API_KEY')
 pinecone_api_key = os.getenv('PINECONE_API_KEY')
