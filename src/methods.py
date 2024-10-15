@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain.llms import Cohere
-from langchain_pinecone import PineconeVectorStore
+from langchain_pinecone.vectorstores import PineconeVectorStore
 from langchain.embeddings import CohereEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import ConversationalRetrievalChain
