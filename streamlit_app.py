@@ -2,6 +2,7 @@ import os
 import shutil
 import streamlit as st
 from dotenv import load_dotenv
+from pinecone import Pinecone,ServerlessSpec
 from src.methods import get_conversational_chain, get_text_chunks, get_vector_store, load_file
 
 # Constants
@@ -37,6 +38,22 @@ def preprocess(file):
 
     print(f"File saved to {file_path}")
     return file_path 
+def create_index(pinecone_api_key,index_name):
+    pc=Pinecone(pinecone_api_key=pinecone_api_key)
+    index_list=pc.list_indexes().names()
+    if index_name not in index_list:
+        pc.create_index(
+            dimension=1024,
+            metric='cosine',
+            name=index_name,
+            spec=ServerlessSpec(
+                region=pinecone_api_env,
+                cloud='aws'
+            )
+        )
+    else:
+        print("Index already exists")
+        pass
 
 def main():
     """Main function to run the Streamlit application."""
@@ -85,6 +102,7 @@ def main():
 
         if docs is not None:
             with st.spinner("Processing your document..."):
+                create_index(pinecone_api_key,pinecone_index_name)
                 directory = preprocess(docs)
                 raw_text = load_file(docs, directory)
                 if raw_text:
