@@ -1,0 +1,8 @@
+streamlit
+python-dotenv
+langchain
+langchain-community
+pypdf
+Cohere
+Pinecone
+-e .
