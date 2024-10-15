@@ -2,8 +2,8 @@ streamlit
 python-dotenv
 langchain
 langchain-community
-langchain-pinecone
+pandas
 pypdf
 Cohere
-Pinecone
+pinecone-client
 -e .
