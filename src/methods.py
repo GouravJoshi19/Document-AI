@@ -11,11 +11,19 @@ from langchain.document_loaders import  Docx2txtLoader, CSVLoader, TextLoader,Py
 
 
 load_dotenv()
-cohere_api_key = st.secrets["COHERE_API_KEY"]
-pinecone_api_key = st.secrets["PINECONE_API_KEY"]
-pinecone_index_name = st.secrets["PINECONE_INDEX"]
-pinecone_api_env = st.secrets["PINECONE_API_ENV"]
-
+try:
+    cohere_api_key = st.secrets["COHERE_API_KEY"]
+    pinecone_api_key = st.secrets["PINECONE_API_KEY"]
+    pinecone_index_name = st.secrets["PINECONE_INDEX"]
+    pinecone_api_env = st.secrets["PINECONE_API_ENV"]
+except KeyError as e:
+    print(f"Missing secret: {e}")
+    # Optionally handle local development using environment variables
+    cohere_api_key = os.getenv("COHERE_API_KEY")
+    pinecone_api_key = os.getenv("PINECONE_API_KEY")
+    pinecone_index_name = os.getenv("PINECONE_INDEX")
+    pinecone_api_env = os.getenv("PINECONE_API_ENV")
+    
 def load_file(docs,directory):
     text = []
     
