@@ -28,16 +28,15 @@ Document-AI/
 │   ├── methods.py              # Functions for preprocessing, chunking, etc.
 │   └── chains.py               # Functions for setting up Langchain conversations
 │
-├── app.py                      # Main Streamlit application
+├── streamlit_app.py            # Main Streamlit application
 ├── Dockerfile                  # Docker configuration file
 ├── .dockerignore               # Files and directories to ignore during Docker image build
 ├── setup.py                    # Setup script for installing the package
 ├── requirements.txt            # Python dependencies
-├── packages.txt                # Apt-get dependencies for deployment (if required)
 └── .env                        #for API key storage
 └── README.md                   # Project documentation
 └── docs/                       # Directory for documentation files
-    ├── project_overview.md     # Overview of the project
+    ├── Approach and challenges.md    # Overview of the approach and the challenges faced
     ├── pipeline_documentation.md # Documentation for pipeline and deployment
 
 ```
