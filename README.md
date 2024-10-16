@@ -112,11 +112,12 @@ If using Docker, after starting the container, access the application at http://
 
 - **Main Chat Interface**:
   
-  ()
+![Screenshot 2024-10-16 101039](https://github.com/user-attachments/assets/9612dfca-16c8-4868-9e49-94d838393c1d)
+
 
 - **Project Info Page**:
   
-  (Add a screenshot of the project info page here)
+![Screenshot 2024-10-16 101109](https://github.com/user-attachments/assets/50027d95-e824-4487-8c93-e1396f845bce)
 
 ---
 
