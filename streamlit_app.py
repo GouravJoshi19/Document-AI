@@ -53,7 +53,6 @@ def create_index(pinecone_api_key,index_name):
         )
     else:
         print("Index already exists")
-        pass
 
 def main():
     """Main function to run the Streamlit application."""
@@ -95,6 +94,7 @@ def main():
         # File uploader for documents
         docs = st.sidebar.file_uploader("Upload Your Document", type=['pdf', 'csv', 'txt'])
 
+        create_index(pinecone_api_key,pinecone_index_name)
         # Clear chat button in sidebar
         if st.sidebar.button("Clear Chat"):
             st.session_state.chat_history.clear()  # Clear the chat history
@@ -102,7 +102,6 @@ def main():
 
         if docs is not None:
             with st.spinner("Processing your document..."):
-                create_index(pinecone_api_key,pinecone_index_name)
                 directory = preprocess(docs)
                 raw_text = load_file(docs, directory)
                 if raw_text:

@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain.llms import Cohere
-from langchain_pinecone.vectorstores import PineconeVectorStore
+from langchain_pinecone import PineconeVectorStore
 from langchain.embeddings import CohereEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import ConversationalRetrievalChain
@@ -55,7 +55,6 @@ def get_vector_store(text_chunks):
             index_name=pinecone_index_name
     )
     return vector_store
-
 def get_conversational_chain(vector_store):
     llm=Cohere(cohere_api_key=cohere_api_key)
     memory=ConversationBufferMemory(memory_key='chat_history',return_messages=True)
