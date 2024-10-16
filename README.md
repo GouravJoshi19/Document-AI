@@ -51,7 +51,7 @@ Run the Docker Container
 After building the image, you can run the container using:
 
 ```
-docker run -it -p 8501:8501 Document-AI
+docker run -p 8501:8501 --env-file .env Document-AI
 ```
 This will start the Streamlit application inside a Docker container, and you can access it at http://localhost:8501.
 
