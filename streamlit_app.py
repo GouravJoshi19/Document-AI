@@ -11,10 +11,10 @@ WORK_DIR = "data"
 # Load environment variables
 load_dotenv()
 try:
-    cohere_api_key = st.secrets["COHERE_API_KEY"]
-    pinecone_api_key = st.secrets["PINECONE_API_KEY"]
-    pinecone_index_name = st.secrets["PINECONE_INDEX"]
-    pinecone_api_env = st.secrets["PINECONE_API_ENV"]
+    cohere_api_key = st.secrets.api_keys.cohere_api_key
+    pinecone_api_key = st.secrets.api_keys.pinecone_api_key
+    pinecone_index_name = st.secrets.api_keys.pinecone_index
+    pinecone_api_env = st.secrets.api_keys.pinecone_api_env
 except KeyError as e:
     print(f"Missing secret: {e}")
     # Optionally handle local development using environment variables
@@ -22,7 +22,7 @@ except KeyError as e:
     pinecone_api_key = os.getenv("PINECONE_API_KEY")
     pinecone_index_name = os.getenv("PINECONE_INDEX")
     pinecone_api_env = os.getenv("PINECONE_API_ENV")
-    
+
 # Ensure the working directory exists
 if not os.path.exists(WORK_DIR):
     os.mkdir(WORK_DIR)
