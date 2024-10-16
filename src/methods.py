@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain.llms import Cohere
-from langchain_pinecone import PineconeVectorStore
+from langchain.vectorstores import Pinecone
 from langchain.embeddings import CohereEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import ConversationalRetrievalChain
@@ -48,9 +48,8 @@ def get_text_chunks(text):
 
 def get_vector_store(text_chunks):
     embeddings=CohereEmbeddings(model='embed-english-v3.0',user_agent='langchain')
-    vector_store=PineconeVectorStore.from_documents(
+    vector_store=Pinecone.from_documents(
             text_chunks,
-            pinecone_api_key=pinecone_api_key,
             embedding=embeddings,
             index_name=pinecone_index_name
     )
